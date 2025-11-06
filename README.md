@@ -253,7 +253,6 @@ Design and implement a **complete automated testing framework** that:
 
 ---
 
----
 
 ## 📈 QUALITY METRICS & COMPLIANCE
 
@@ -320,6 +319,38 @@ All features were validated against the official API specification with 100% end
 | Undetected API Errors | 5 per cycle | 0 | ✅ Eliminated |
 | Security Vulnerabilities | 2 minor/month | 0 | 🛡️ Prevented |
 
+---
+## Pipeline Visualization
+
+```mermaid
+graph TD
+    A[Code Change / Pull Request] --> B[Trigger API Tests]
+    B --> C[Environment Setup]
+    C --> D[Install Newman + Reporter]
+    D --> E[Run Postman Collection]
+    
+    E --> F{All API Tests Pass?}
+    F -->|Yes| G[Generate HTML Report]
+    F -->|No| H[Fail Build / Flag Issue]
+    
+    G --> I[Upload Report as Artifact]
+    I --> J[Notify Success via Email]
+    H --> K[Notify Failure via Email]
+    
+    L[Scheduled Run every 15 mins] --> B
+    M[Manual Trigger] --> B
+    
+    style A fill:#4CAF50,stroke:#333,stroke-width:2px
+    style L fill:#9C27B0,stroke:#333,stroke-width:2px
+    style M fill:#03A9F4,stroke:#333,stroke-width:2px
+    style F fill:#FF9800,stroke:#333,stroke-width:2px
+    style G fill:#2196F3,stroke:#333,stroke-width:2px
+    style H fill:#f44336,stroke:#333,stroke-width:2px
+    style I fill:#00BCD4,stroke:#333,stroke-width:2px
+    style J fill:#8BC34A,stroke:#333,stroke-width:2px
+    style K fill:#E91E63,stroke:#333,stroke-width:2px
+
+```    
 ---
 
 ### 📊 Continuous Monitoring Dashboard
