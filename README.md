@@ -1,5 +1,13 @@
 # 🧪 RESTful Booker API - Automated Testing Framework
 
+### About the API
+
+This project uses the **RESTful Booker API** as the target for automated testing and validation.  
+The API provides endpoints for **authentication**, **booking management (CRUD operations)**, and **health checks**.  
+All endpoints and request/response structures are documented at [RESTful Booker API Documentation](https://restful-booker.herokuapp.com/apidoc/index.html#api-Booking-PartialUpdateBooking).  
+The automated tests validate both standard and edge-case scenarios to ensure consistent behavior and reliability across environments.
+
+---
 ### 🎯 STAR METHOD - PROJECT STORY
 
 #### **Situation**
