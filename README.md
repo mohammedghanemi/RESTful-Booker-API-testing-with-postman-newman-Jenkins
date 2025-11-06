@@ -320,6 +320,78 @@ All features were validated against the official API specification with 100% end
 | Security Vulnerabilities | 2 minor/month | 0 | 🛡️ Prevented |
 
 ---
+## 🛠 Tools, Test Data & Known Issues
+
+### **Tools & Frameworks**
+| Tool / Framework | Version | Purpose |
+|-----------------|---------|---------|
+| **Postman** | 10.23.1 | API request design, execution, and collection management |
+| **Newman** | 6.24.1 | CLI runner for executing Postman collections in CI/CD |
+| **GitHub Actions** | N/A | CI/CD automation for scheduled and PR-triggered test runs |
+| **Node.js** | 20.x | Environment for running Newman tests |
+| **JSON Schema Validator** | 2.3.0 | Response payload validation against API contract |
+
+### **Sample Test Data / Payloads**
+
+**1. Authentication - CreateToken**
+```json
+{
+  "username": "admin",
+  "password": "password123"
+}
+```
+--  Expected Response:
+```json
+{
+  "token": "abc123"
+}
+```
+
+**2. Booking - CreateBooking
+```json
+
+{
+  "firstname": "Jim",
+  "lastname": "Brown",
+  "totalprice": 111,
+  "depositpaid": true,
+  "bookingdates": {
+    "checkin": "2018-01-01",
+    "checkout": "2019-01-01"
+  },
+  "additionalneeds": "Breakfast"
+}
+
+
+Expected Response:
+
+{
+  "bookingid": 1,
+  "booking": {
+    "firstname": "Jim",
+    "lastname": "Brown",
+    "totalprice": 111,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2018-01-01",
+      "checkout": "2019-01-01"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}
+
+
+**3. Booking - Partial Update
+
+{
+  "firstname": "James",
+  "additionalneeds": "Late Checkout"
+}
+
+```
+Expected Result: 200 OK, updated fields reflected in GET response
+
+---
 ## Pipeline Visualization
 
 ```mermaid
