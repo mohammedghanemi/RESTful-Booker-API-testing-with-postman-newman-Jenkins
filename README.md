@@ -339,15 +339,15 @@ All features were validated against the official API specification with 100% end
   "username": "admin",
   "password": "password123"
 }
-```
---  Expected Response:
-```json
+
+Expected Response:
+
 {
   "token": "abc123"
 }
 ```
 
-**2. Booking - CreateBooking
+**2. Booking - CreateBooking**
 ```json
 
 {
@@ -361,7 +361,6 @@ All features were validated against the official API specification with 100% end
   },
   "additionalneeds": "Breakfast"
 }
-
 
 Expected Response:
 
@@ -379,17 +378,31 @@ Expected Response:
     "additionalneeds": "Breakfast"
   }
 }
+```
 
+**3. Booking - Partial Update**
 
-**3. Booking - Partial Update
+```json
 
 {
   "firstname": "James",
   "additionalneeds": "Late Checkout"
 }
 
-```
+
 Expected Result: 200 OK, updated fields reflected in GET response
+```
+
+---
+## Known Limitations & Issues
+
+| Category                | Description                                                       | Mitigation                                                                 |
+|-------------------------|-------------------------------------------------------------------|----------------------------------------------------------------------------|
+| Rate Limiting           | API may throttle requests during high concurrency                 | Implemented delay/retry mechanism in Postman scripts                       |
+| Undocumented Edge Cases | Some API responses may return additional fields not in documentation | Verified with schema validation, ignored extra fields for automation       |
+| Flaky Tests             | Occasional timeout on GET /booking with large datasets            | Increased request timeout and retry policy in Newman                       |
+| Security Tests          | XSS and SQLi detection limited to string fields                   | Full coverage achieved for common attack patterns; manual testing recommended for rare payloads |
+| Environment Differences | Test results may vary if API server updates occur                 | Daily scheduled runs ensure current production validation                  |
 
 ---
 ## Pipeline Visualization
