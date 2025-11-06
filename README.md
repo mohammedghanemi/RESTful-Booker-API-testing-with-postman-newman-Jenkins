@@ -1,5 +1,10 @@
 # 🧪 RESTful Booker API - Automated Testing Framework
 
+This project focuses on automated testing of the RESTful Booker API, which provides endpoints for authentication, booking management (CRUD), and health checks.
+Objective: Minimize errors, ensure data integrity, and provide continuous validation through CI/CD pipelines.
+This framework allows developers and testers to verify API behavior for positive, negative, and security scenarios such as SQL injection and XSS, achieving 100% endpoint coverage.
+Business value: Reduces manual testing, increases reliability, and ensures security compliance in production environments.
+
 ### About the API
 
 This project uses the **RESTful Booker API** as the target for automated testing and validation.  
